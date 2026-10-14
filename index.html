@@ -61,8 +61,9 @@
     </ul>
 
     <h3>2. 기기 저장소와 위젯</h3>
-    <p>사용량 기록, 연결 상태, 언어와 데모 설정은 기기 내 앱 저장소에 보관됩니다. 위젯은 같은 기기의 공유 저장소에서 저장된 사용량을 읽으며, 별도로 서비스에 로그인하거나 광고를 표시하지 않습니다. Usage Pocket 자체 계정, 운영자 데이터베이스 또는 자체 클라우드 동기화는 없습니다. 기기 백업·복원 여부는 iOS와 사용자의 백업 설정에 따라 달라질 수 있으며, OpenRouter 키는 기기 한정 Keychain 항목으로 저장합니다.</p>
+    <p>사용량 기록, 연결 상태, 언어, 색상 및 자동 기록 설정은 기기 내 앱 저장소에 보관됩니다. 위젯은 같은 기기의 공유 저장소에서 저장된 사용량을 읽으며, 별도로 서비스에 로그인하거나 광고를 표시하지 않습니다. Usage Pocket 자체 계정, 운영자 데이터베이스 또는 자체 클라우드 동기화는 없습니다. 기기 백업·복원 여부는 iOS와 사용자의 백업 설정에 따라 달라질 수 있으며, OpenRouter 키는 기기 한정 Keychain 항목으로 저장합니다.</p>
 
+    <p>자동 기록을 켜면 iOS가 허용하는 시점에 기기에서 연결한 서비스로 직접 사용량을 조회할 수 있습니다. 실행 간격은 보장되지 않습니다. 조회 결과와 함께 시도·성공 시각, 처리 단계, 오류 유형, 응답 상태 코드, 소요 시간 등 최소한의 진단 정보가 기기에 저장됩니다. 진단 정보에 비밀번호, 쿠키, 토큰, 인증 코드 또는 대화 내용은 포함하지 않습니다. 설정의 자동 기록에서 수집을 끌 수 있습니다.</p>
     <h3>3. 배너 광고와 개인정보 선택</h3>
     <p>홈 화면 하단의 배너에는 Google AdMob(Google Mobile Ads SDK)을, 동의 메시지와 광고 개인정보 선택에는 Google User Messaging Platform(UMP)을 사용합니다.</p>
     <p>광고 서비스는 IP 주소와 이로부터 추정되는 대략적 위치, 기기·앱 관련 식별자, 광고 노출·클릭 등의 상호작용, 성능 및 오류·진단 정보, 동의 상태를 처리할 수 있습니다. 이 정보는 광고 제공·측정, 분석, 문제 해결과 부정 이용 방지 등에 사용될 수 있으며 Google과 동의 화면에 표시되는 해당 광고 파트너의 정책이 적용됩니다.</p>
@@ -81,7 +82,7 @@
 
     <h3>5. 보관 기간과 삭제</h3>
     <ul>
-      <li><strong>사용량 기록:</strong> 성공적으로 새로 조회할 때 최근 90일 범위로 정리하며, 저장 개수에도 상한을 적용합니다. 앱을 실행하거나 조회하지 않으면 이 정리 작업은 실행되지 않습니다. 설정의 <strong>저장된 기록 삭제</strong>로 기록을 지울 수 있습니다. 이 동작은 현재 연결과 최신 조회값을 유지합니다.</li>
+      <li><strong>사용량 기록:</strong> 성공적으로 새로 조회할 때 최근 90일 범위로 정리하며, 저장 개수에도 상한을 적용합니다. 전경 또는 백그라운드에서 조회에 성공하지 않으면 이 정리 작업은 실행되지 않습니다. 설정의 <strong>저장된 기록 삭제</strong>로 기록을 지울 수 있습니다. 이 동작은 현재 연결과 최신 조회값을 유지합니다.</li>
       <li><strong>OpenRouter:</strong> 설정에서 연결을 해제하면 앱에 저장된 키, 해당 연결의 최신 사용량과 기록을 삭제합니다. OpenRouter 자체의 키를 폐기하려면 OpenRouter에서 별도로 취소해야 합니다.</li>
       <li><strong>Codex·Claude:</strong> 서비스 연결 해제 시 해당 서비스의 저장된 사용량, 기록과 앱 내 웹 로그인 데이터를 삭제합니다. 로그인 화면의 <strong>이 서비스의 웹 로그인 초기화</strong>로 웹 로그인 데이터만 지울 수도 있습니다. 제공자 계정과 다른 앱의 로그인은 삭제되지 않습니다.</li>
       <li>최신 조회값과 설정은 삭제·변경 전까지 기기에 남을 수 있습니다. 앱 삭제만으로 모든 Keychain 항목이 삭제된다고 보장할 수 없으므로, 삭제 전 연결 해제를 이용해 주세요. 백업 사본은 사용 중인 백업 서비스에서 관리해야 합니다.</li>
@@ -117,8 +118,9 @@
     </ul>
 
     <h3>2. Device storage and widgets</h3>
-    <p>Usage history, connection status, language, and demo preferences are stored locally. Widgets read saved usage from a shared container on the same device; they do not independently sign in to services or display ads. There is no Usage Pocket account, operator database, or app-operated cloud sync. Device backup and restoration may depend on iOS and your backup settings. The OpenRouter key uses a device-only Keychain item.</p>
+    <p>Usage history, connection status, language, colors, and automatic recording preferences are stored locally. Widgets read saved usage from a shared container on the same device; they do not independently sign in to services or display ads. There is no Usage Pocket account, operator database, or app-operated cloud sync. Device backup and restoration may depend on iOS and your backup settings. The OpenRouter key uses a device-only Keychain item.</p>
 
+    <p>When automatic recording is enabled, the device may query connected services directly when iOS permits. Refresh intervals are not guaranteed. Minimal diagnostics such as attempt/success times, processing phase, error type, response status code, and duration are stored on the device alongside collection results. Diagnostics do not include passwords, cookies, tokens, authentication codes, or conversations. You can disable collection in Settings &gt; Automatic recording.</p>
     <h3>3. Banner advertising and privacy choices</h3>
     <p>A banner at the bottom of the home screen uses Google AdMob (Google Mobile Ads SDK). Google’s User Messaging Platform (UMP) manages consent messages and ad privacy choices.</p>
     <p>Advertising services may process IP addresses and approximate location inferred from them, device or app identifiers, ad impressions and clicks, performance and crash/diagnostic data, and consent status. Purposes may include delivering and measuring ads, analytics, troubleshooting, and preventing abuse. Google’s policies and those of applicable ad partners shown in the consent interface apply.</p>
@@ -137,7 +139,7 @@
 
     <h3>5. Retention and deletion</h3>
     <ul>
-      <li><strong>Usage history:</strong> Each successful refresh prunes history to the preceding 90 days, subject to a record-count cap. This cleanup does not run while the app is unused or no refresh succeeds. Use <strong>Delete saved history</strong> in settings to remove history while keeping current connections and the latest readings.</li>
+      <li><strong>Usage history:</strong> Each successful refresh prunes history to the preceding 90 days, subject to a record-count cap. This cleanup runs only after a successful foreground or background refresh. Use <strong>Delete saved history</strong> in settings to remove history while keeping current connections and the latest readings.</li>
       <li><strong>OpenRouter:</strong> Disconnecting in settings deletes the saved key, latest usage, and history for that connection from the app. To revoke the key at OpenRouter itself, revoke it separately through OpenRouter.</li>
       <li><strong>Codex and Claude:</strong> Disconnecting removes that service’s saved usage, history, and in-app web sign-in data. <strong>Clear this saved web login</strong> on the sign-in screen clears only web sign-in data. It does not delete the provider account or sign-ins in other apps.</li>
       <li>Latest readings and preferences may remain on the device until changed or removed. Uninstalling alone is not guaranteed to remove every Keychain item; disconnect services before uninstalling. Manage backup copies through your backup service.</li>
