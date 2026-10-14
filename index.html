@@ -54,10 +54,10 @@
 
     <h3>1. 서비스 연결 및 사용량 조회</h3>
     <ul>
-      <li><strong>OpenRouter:</strong> 사용자가 입력한 API 키로 기기에서 OpenRouter에 직접 HTTPS 요청을 보내 해당 키의 사용액과 설정 한도를 조회합니다. 키는 검증 후 이 기기의 Apple Keychain에 저장됩니다. 사용량 조회 기능은 AI 생성 요청을 보내지 않습니다.</li>
-      <li><strong>OpenAI API·Claude API:</strong> 사용자가 입력한 본인 조직의 관리자 API 키를 각 제공사의 공식 HTTPS API로 직접 보내 이번 달 조직 전체 비용과 일별 비용을 조회합니다. 검증된 키는 서비스별 기기 한정 Keychain 항목으로 저장됩니다. 일반 모델 호출용 키와 구독 로그인은 이 비용 조회에 사용하지 않으며, AI 생성이나 계정 변경 요청을 보내지 않습니다.</li>
+      <li><strong>OpenRouter:</strong> 사용자가 입력한 API 키로 기기에서 OpenRouter에 직접 HTTPS 요청을 보내 일반 키의 사용액·한도를 조회합니다. 관리 키를 연결하면 계정 전체의 최근 완료된 30일 비용, 입력·출력·캐시 토큰, 요청 수와 모델별 집계를 조회합니다. 키는 검증 후 이 기기의 Apple Keychain에 저장됩니다. 사용량 조회 기능은 AI 생성 요청을 보내지 않습니다.</li>
+      <li><strong>OpenAI API·Claude API:</strong> 사용자가 입력한 본인 조직의 관리자 API 키를 각 제공사의 공식 HTTPS API로 직접 보내 이번 달 조직 전체 비용·일별 비용과 제공되는 모델별 입력·출력·캐시 토큰 및 요청 수 집계를 조회합니다. 검증된 키는 서비스별 기기 한정 Keychain 항목으로 저장됩니다. 일반 모델 호출용 키와 구독 로그인은 이 비용 조회에 사용하지 않으며, AI 생성이나 계정 변경 요청을 보내지 않습니다.</li>
       <li><strong>Codex·Claude:</strong> 사용자가 앱 내 공식 웹 로그인 화면에서 직접 로그인합니다. 로그인 쿠키·웹 세션은 서비스별로 분리된 기기 내 WebKit 저장소에 유지되고 사용량 조회에 사용됩니다. 앱은 Safari의 기존 쿠키를 가져오지 않습니다. 선택한 로그인 제공자의 화면에는 해당 제공자의 개인정보처리방침이 적용됩니다.</li>
-      <li><strong>조회 결과:</strong> 서비스 이름, 한도 및 남은 비율, 한도 재설정 시각, API 서비스 사용액과 일별 비용, 조회 시각, 연결 상태와 계정 구분용 해시값을 기기에 저장합니다. Claude 조직 선택이 필요한 경우 조직 이름과 식별자를 선택·조회에 사용하고, 저장 시 계정 참조값을 해시 처리합니다.</li>
+      <li><strong>조회 결과:</strong> 서비스 이름, 한도 및 남은 비율, 한도 재설정 시각, API 서비스 사용액과 일별 비용, 모델 이름과 날짜별 토큰·요청 수 집계, 조회 시각, 연결 상태와 계정 구분용 해시값을 기기에 저장합니다. Claude 조직 선택이 필요한 경우 조직 이름과 식별자를 선택·조회에 사용하고, 저장 시 계정 참조값을 해시 처리합니다.</li>
       <li>사용량 조회 기능은 프롬프트나 대화 내용을 수집·저장하는 기능이 아닙니다. 공식 웹페이지를 직접 탐색할 때 해당 웹사이트가 처리하는 정보에는 그 사이트의 방침이 적용됩니다. Gemini 자동 사용량 연결은 현재 제공하지 않습니다.</li>
     </ul>
 
@@ -85,7 +85,7 @@
     <ul>
       <li><strong>사용량 기록:</strong> 성공적으로 새로 조회할 때 최근 90일 범위로 정리하며, 저장 개수에도 상한을 적용합니다. 전경 또는 백그라운드에서 조회에 성공하지 않으면 이 정리 작업은 실행되지 않습니다. 설정의 <strong>저장된 기록 삭제</strong>로 기록을 지울 수 있습니다. 이 동작은 현재 연결과 최신 조회값을 유지합니다.</li>
       <li><strong>API 연결:</strong> 설정이나 서비스 상세에서 연결을 해제하면 앱에 저장된 키, 해당 연결의 최신 사용량과 기록을 삭제합니다. 제공사 자체의 키를 폐기하려면 해당 제공사에서 별도로 취소해야 합니다.</li>
-      <li><strong>OpenAI API·Claude API:</strong> 사용자가 입력한 본인 조직의 관리자 API 키를 각 제공사의 공식 HTTPS API로 직접 보내 이번 달 조직 전체 비용과 일별 비용을 조회합니다. 검증된 키는 서비스별 기기 한정 Keychain 항목으로 저장됩니다. 일반 모델 호출용 키와 구독 로그인은 이 비용 조회에 사용하지 않으며, AI 생성이나 계정 변경 요청을 보내지 않습니다.</li>
+      
       <li><strong>Codex·Claude:</strong> 서비스 연결 해제 시 해당 서비스의 저장된 사용량, 기록과 앱 내 웹 로그인 데이터를 삭제합니다. 로그인 화면의 <strong>이 서비스의 웹 로그인 초기화</strong>로 웹 로그인 데이터만 지울 수도 있습니다. 제공자 계정과 다른 앱의 로그인은 삭제되지 않습니다.</li>
       <li>최신 조회값과 설정은 삭제·변경 전까지 기기에 남을 수 있습니다. 앱 삭제만으로 모든 Keychain 항목이 삭제된다고 보장할 수 없으므로, 삭제 전 연결 해제를 이용해 주세요. 백업 사본은 사용 중인 백업 서비스에서 관리해야 합니다.</li>
       <li>Google·AI 서비스가 직접 보유한 데이터의 삭제와 보관은 해당 제공자에게 요청해야 합니다. 운영자는 기기에만 저장된 데이터에 원격으로 접근하거나 이를 삭제할 수 없습니다.</li>
@@ -113,10 +113,10 @@
 
     <h3>1. Service connections and usage requests</h3>
     <ul>
-      <li><strong>OpenRouter:</strong> Your device sends your entered API key directly to OpenRouter over HTTPS to retrieve that key’s spending and configured limit. After verification, the key is stored in Apple Keychain on this device. The usage lookup feature does not send AI generation requests.</li>
-      <li><strong>OpenAI API and Claude API:</strong> Your device sends your own organization Admin API key directly to the provider’s official HTTPS API to retrieve organization-wide costs for the current month and daily cost reports. Verified keys are stored in separate device-only Keychain items. Standard model keys and subscription sign-ins are not used for this report. The app does not make AI generation requests or account changes.</li>
+      <li><strong>OpenRouter:</strong> Your device sends your entered API key directly to OpenRouter over HTTPS to retrieve a regular key’s spending and configured limit. With a management key, it retrieves account-wide costs, input/output/cache tokens, request counts and model breakdowns for the last 30 completed days. After verification, the key is stored in Apple Keychain on this device. The usage lookup feature does not send AI generation requests.</li>
+      <li><strong>OpenAI API and Claude API:</strong> Your device sends your own organization Admin API key directly to the provider’s official HTTPS API to retrieve organization-wide current-month and daily cost reports, plus available model-level input/output/cache token and request-count aggregates. Verified keys are stored in separate device-only Keychain items. Standard model keys and subscription sign-ins are not used for this report. The app does not make AI generation requests or account changes.</li>
       <li><strong>Codex and Claude:</strong> You sign in yourself on the service’s official web sign-in page within the app. Cookies and web sessions remain in separate, per-service WebKit stores on your device and are used for usage requests. The app does not import existing Safari cookies. Any sign-in provider you select processes information under its own policy.</li>
-      <li><strong>Results:</strong> The app stores service names, quota and remaining percentages, reset times, API spending and daily cost reports, observation times, connection status, and hashed account references on your device. If Claude organization selection is needed, organization names and identifiers are used for selection and requests; the stored account reference is hashed.</li>
+      <li><strong>Results:</strong> The app stores service names, quota and remaining percentages, reset times, API spending and daily cost reports, model names and daily token/request aggregates, observation times, connection status, and hashed account references on your device. If Claude organization selection is needed, organization names and identifiers are used for selection and requests; the stored account reference is hashed.</li>
       <li>The usage lookup feature does not collect or store prompts or conversation content. Information processed while you browse an official service webpage is subject to that website’s policy. Automatic Gemini usage integration is not currently provided.</li>
     </ul>
 
@@ -144,7 +144,7 @@
     <ul>
       <li><strong>Usage history:</strong> Each successful refresh prunes history to the preceding 90 days, subject to a record-count cap. This cleanup runs only after a successful foreground or background refresh. Use <strong>Delete saved history</strong> in settings to remove history while keeping current connections and the latest readings.</li>
       <li><strong>API connections:</strong> Disconnecting in settings or service details deletes the saved key, latest usage, and history for that connection from the app. To revoke a key at the provider itself, revoke it separately through that provider.</li>
-      <li><strong>OpenAI API and Claude API:</strong> Your device sends your own organization Admin API key directly to the provider’s official HTTPS API to retrieve organization-wide costs for the current month and daily cost reports. Verified keys are stored in separate device-only Keychain items. Standard model keys and subscription sign-ins are not used for this report. The app does not make AI generation requests or account changes.</li>
+      
       <li><strong>Codex and Claude:</strong> Disconnecting removes that service’s saved usage, history, and in-app web sign-in data. <strong>Clear this saved web login</strong> on the sign-in screen clears only web sign-in data. It does not delete the provider account or sign-ins in other apps.</li>
       <li>Latest readings and preferences may remain on the device until changed or removed. Uninstalling alone is not guaranteed to remove every Keychain item; disconnect services before uninstalling. Manage backup copies through your backup service.</li>
       <li>Retention and deletion of data held directly by Google or AI providers are governed by those providers. Contact them for deletion requests. The operator cannot remotely access or erase data stored only on your device.</li>
